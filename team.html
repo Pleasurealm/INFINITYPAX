@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>INFINITYPAX — Team Roster</title>
+  <link rel="icon" href="assets/img/logo-black.png">
+  <link rel="stylesheet" href="assets/css/letterhead.css">
+  <style>
+    body{background:var(--paper);}
+    .controls{display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin:24px 0 8px;}
+    .controls input[type=search]{flex:1; min-width:220px; font-family:var(--body); font-size:12.5px; color:var(--ink);
+      background:var(--paper); border:1px solid var(--hair); padding:10px 12px;}
+    .controls input:focus-visible{outline:2px solid var(--ink); outline-offset:1px;}
+    .fbtns{display:flex; gap:8px; flex-wrap:wrap;}
+    .fbtns button{font-family:var(--display); text-transform:uppercase; letter-spacing:0.08em; font-size:9.5px;
+      color:var(--ink-2); background:var(--paper); border:1px solid var(--hair); padding:9px 13px; cursor:pointer;}
+    .fbtns button.active{color:var(--paper); background:var(--ink); border-color:var(--ink);}
+    .rcount{font-family:var(--display); text-transform:uppercase; letter-spacing:var(--tw-wide); font-size:9.5px; color:var(--meta); margin:6px 0 20px;}
+    .roster{display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:16px;}
+    .pc{border:1px solid var(--hair); padding:16px 18px; display:flex; flex-direction:column; gap:12px;}
+    .pc-h{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;}
+    .pc-ser{font-family:var(--display); color:var(--meta); font-size:11px; letter-spacing:0.06em;}
+    .pc-name{font-family:var(--display); text-transform:uppercase; letter-spacing:0.04em; font-size:16px; color:var(--ink); margin:0;}
+    .pc-remark{font-family:var(--display); text-transform:uppercase; letter-spacing:0.08em; font-size:8px; color:var(--paper); background:var(--ink); padding:3px 6px;}
+    .pc-phone{font-family:var(--body); font-size:11px; color:var(--meta); margin-left:auto;}
+    .pc-chips{display:flex; gap:6px; flex-wrap:wrap;}
+    .pc-chips span{font-family:var(--display); text-transform:uppercase; letter-spacing:0.06em; font-size:8.5px; color:var(--ink-2); border:1px solid var(--hair); padding:4px 8px;}
+    .pc-lbl{font-family:var(--display); text-transform:uppercase; letter-spacing:var(--tw-wide); font-size:9px; color:var(--meta); margin-bottom:6px;}
+    .pc ul{margin:0; padding:0; list-style:none;}
+    .pc li{font-family:var(--body); color:var(--ink-2); font-size:11px; line-height:1.75; padding-left:14px; position:relative;}
+    .pc li::before{content:"—"; position:absolute; left:0; color:var(--meta);}
+    .pc-field label{display:block; font-family:var(--display); text-transform:uppercase; letter-spacing:var(--tw-wide); font-size:8.5px; color:var(--meta); margin-bottom:5px;}
+    .pc-field input{width:100%; font-family:var(--body); font-size:11.5px; color:var(--ink); background:var(--paper); border:1px solid var(--hair-soft); padding:8px 10px;}
+    .pc-field input:focus-visible{outline:1px solid var(--ink); outline-offset:0;}
+    .pc details{border-top:1px solid var(--hair-soft); padding-top:10px;}
+    .pc summary{font-family:var(--display); text-transform:uppercase; letter-spacing:var(--tw-wide); font-size:9px; color:var(--meta); cursor:pointer;}
+    .pc .subj{font-family:var(--display); text-transform:uppercase; letter-spacing:0.02em; font-size:10px; color:var(--ink); margin:10px 0 8px;}
+    .pc .mbody{font-family:var(--body); font-size:11px; line-height:1.55; color:var(--ink-2); white-space:pre-wrap;}
+    .pc-row{display:flex; gap:8px; flex-wrap:wrap;}
+    .mini{font-family:var(--display); text-transform:uppercase; letter-spacing:var(--tw-wide); font-size:9px; padding:9px 14px; border:1px solid var(--ink); background:var(--paper); color:var(--ink); cursor:pointer; text-decoration:none; display:inline-block;}
+    .mini:hover{background:var(--ink); color:var(--paper);}
+    .mini.done{background:var(--ink); color:var(--paper);}
+    .backbar{display:flex; gap:12px; margin:26px 0 0; flex-wrap:wrap;}
+    .backbar a{font-family:var(--display); text-transform:uppercase; letter-spacing:var(--tw-wide); font-size:10px; padding:12px 20px; border:1px solid var(--ink); text-decoration:none; color:var(--ink);}
+    .backbar a:hover{background:var(--ink); color:var(--paper);}
+  </style>
+</head>
+<body>
+<div class="dash">
+
+  <header class="dtop">
+    <img src="assets/img/logo-black.png" alt="INFINITYPAX">
+    <div class="words">
+      <div class="wm">Infinity Pax</div>
+      <a class="sub" href="https://www.infinitypax.info" style="text-decoration:none;">www.infinitypax.info</a>
+    </div>
+    <div class="role">Operations Manager<br><b>Mithulal Bishwakarma · +44.7729.669.690</b></div>
+  </header>
+
+  <section class="lede">
+    <div class="eyebrow">Team Roster · Ex-Forces Security &amp; Estate Services</div>
+    <h1>Team<br>Roster</h1>
+    <p>Every member leads with SIA security and front-of-house capability, with a skilled trade as an added-value second string. Search or filter, edit the target-employer email per person, and copy a personalised covering email to send. Edits are saved to this browser.</p>
+  </section>
+
+  <div class="controls">
+    <input type="search" id="q" placeholder="Search name, qualification or trade…" aria-label="Search roster">
+    <div class="fbtns" id="filters">
+      <button class="active" data-f="all">All</button>
+      <button data-f="sia">SIA</button>
+      <button data-f="driver">Drivers</button>
+      <button data-f="trade">Trades</button>
+    </div>
+  </div>
+  <div class="rcount" id="rcount"></div>
+
+  <div class="roster" id="roster"></div>
+
+  <div class="backbar">
+    <a href="index.html">← Capability Dashboard</a>
+    <a href="jobfinder.html">Job Finder Agent</a>
+  </div>
+
+  <footer class="dfoot">
+    <span>Infinity Pax · Ex-Forces Security &amp; Estate Services</span>
+    <span>Team Roster · Confidential</span>
+    <span>Mithulal Bishwakarma · mi@inifinitypax.london</span>
+  </footer>
+
+</div>
+
+<script src="assets/js/profile.js"></script>
+<script src="assets/js/team.js"></script>
+</body>
+</html>

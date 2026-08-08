@@ -1,0 +1,352 @@
+[
+  {
+    "ser": "01",
+    "name": "Mithulal Bishwakarma",
+    "phone": "07729669690",
+    "quals": "SIA/Electrician",
+    "remark": "Ops Manager"
+  },
+  {
+    "ser": "02",
+    "name": "Miraj Bishwakarma",
+    "phone": "07479717710",
+    "quals": "SIA",
+    "remark": ""
+  },
+  {
+    "ser": "03",
+    "name": "Suraj Thapa",
+    "phone": "07888844585",
+    "quals": "SIA/Carpenter",
+    "remark": ""
+  },
+  {
+    "ser": "04",
+    "name": "Amar Gurung",
+    "phone": "07414130524",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "05",
+    "name": "Amrit Bhattarai",
+    "phone": "07587591767",
+    "quals": "SIA",
+    "remark": ""
+  },
+  {
+    "ser": "06",
+    "name": "Thaman Gurung",
+    "phone": "07497166320",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "07",
+    "name": "Padam Gurung",
+    "phone": "07878419650",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "08",
+    "name": "Krishna Tamang",
+    "phone": "07853052081",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "09",
+    "name": "Milan Gurung",
+    "phone": "07957154814",
+    "quals": "SIA/Veh Mechanics",
+    "remark": ""
+  },
+  {
+    "ser": "10",
+    "name": "Pushker Gurung",
+    "phone": "07780458641",
+    "quals": "SIA/Painter/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "11",
+    "name": "Ashok Rai",
+    "phone": "07894505239",
+    "quals": "SIA/Brick Layer/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "12",
+    "name": "Khim Bista",
+    "phone": "07588582612",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "13",
+    "name": "Khamir Gurung",
+    "phone": "07399685747",
+    "quals": "SIA/Private car driver",
+    "remark": ""
+  },
+  {
+    "ser": "14",
+    "name": "Kul Ale",
+    "phone": "07849888644",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "15",
+    "name": "Ashis Chaugai",
+    "phone": "07503632047",
+    "quals": "SIA",
+    "remark": ""
+  },
+  {
+    "ser": "16",
+    "name": "Yam Bahadur Magar",
+    "phone": "07853818114",
+    "quals": "SIA",
+    "remark": ""
+  },
+  {
+    "ser": "17",
+    "name": "Jit Bahadur Thapa",
+    "phone": "07479140404",
+    "quals": "SIA",
+    "remark": ""
+  },
+  {
+    "ser": "18",
+    "name": "Prem Prasad Gurung",
+    "phone": "07912537794",
+    "quals": "SIA",
+    "remark": ""
+  },
+  {
+    "ser": "19",
+    "name": "Om Prakash Shrestha",
+    "phone": "07828869883",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "20",
+    "name": "Kumar Thapa",
+    "phone": "07725465735",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "21",
+    "name": "Krishna Rai",
+    "phone": "07786413735",
+    "quals": "SIA/Plumber",
+    "remark": ""
+  },
+  {
+    "ser": "22",
+    "name": "Dharam Bishwakarma",
+    "phone": "07533927109",
+    "quals": "SIA/Driver/Armourer",
+    "remark": ""
+  },
+  {
+    "ser": "23",
+    "name": "Nagendra Bishwakarma",
+    "phone": "07897171330",
+    "quals": "Clerk/IT",
+    "remark": ""
+  },
+  {
+    "ser": "24",
+    "name": "Ganga Bahadur Limbu",
+    "phone": "07809887068",
+    "quals": "SIA/Brick Layer",
+    "remark": ""
+  },
+  {
+    "ser": "25",
+    "name": "Som Bahadur Rana",
+    "phone": "07823441481",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "26",
+    "name": "Kesh Bahadur Ale",
+    "phone": "07588498148",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "27",
+    "name": "Deepak Hamal",
+    "phone": "07803893465",
+    "quals": "SIA/Painter/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "28",
+    "name": "Bikash Pokhrel",
+    "phone": "07412015408",
+    "quals": "Chef/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "29",
+    "name": "Sabitri BK",
+    "phone": "07498305319",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "30",
+    "name": "Bindi Pokhrel",
+    "phone": "07311113076",
+    "quals": "Care Taker",
+    "remark": ""
+  },
+  {
+    "ser": "31",
+    "name": "Tejbahadur Sunar",
+    "phone": "07587393685",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "32",
+    "name": "Bickey Limbu",
+    "phone": "07577855478",
+    "quals": "SIA",
+    "remark": ""
+  },
+  {
+    "ser": "33",
+    "name": "Uday Thapa",
+    "phone": "07878023074",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "34",
+    "name": "Chet Bahadur Rana",
+    "phone": "07786162618",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "35",
+    "name": "Amar Bishwakarma",
+    "phone": "07403751251",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "36",
+    "name": "Dakman Gurung",
+    "phone": "07878834366",
+    "quals": "SIA/Plumber/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "37",
+    "name": "Laxman Thapa",
+    "phone": "07853031631",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "38",
+    "name": "Ashok Limbu",
+    "phone": "07735227239",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "39",
+    "name": "Jaya Kumar Rai",
+    "phone": "07533984869",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "40",
+    "name": "Bhim Limbu",
+    "phone": "07427153336",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "41",
+    "name": "Bhim Thapa",
+    "phone": "07853358823",
+    "quals": "Driver",
+    "remark": ""
+  },
+  {
+    "ser": "42",
+    "name": "Bhim Thapa",
+    "phone": "07825181518",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "43",
+    "name": "Tej Kumar Changbang",
+    "phone": "07809440069",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "44",
+    "name": "Tek Bahadur Gurung",
+    "phone": "07830319018",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "45",
+    "name": "Manman Gurung",
+    "phone": "07809296364",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "46",
+    "name": "Hari Gurung",
+    "phone": "07818414869",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "47",
+    "name": "Shibaram Gurung",
+    "phone": "07817912623",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "48",
+    "name": "Pradip Kerung",
+    "phone": "07778577755",
+    "quals": "SIA/Painter/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "49",
+    "name": "Dik Bahadur Rai",
+    "phone": "07912577850",
+    "quals": "SIA/Driver",
+    "remark": ""
+  },
+  {
+    "ser": "50",
+    "name": "Mitra Bishwakarma",
+    "phone": "07557234855",
+    "quals": "SIA/Plant Operator",
+    "remark": ""
+  }
+]

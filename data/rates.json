@@ -1,0 +1,14 @@
+{
+  "note": "Indicative client charge-out rates, London, exclusive of VAT. Block-booking, overnight and long-term contract rates on application.",
+  "tiers": [
+    { "key": "entry", "label": "Entry", "sub": "SIA · <2 yrs" },
+    { "key": "experienced", "label": "Experienced", "sub": "2–5 yrs" },
+    { "key": "senior", "label": "Senior / Specialist", "sub": "5+ yrs" }
+  ],
+  "roles": [
+    { "role": "Security & concierge", "basis": "per hr", "entry": "£16–18", "experienced": "£18–21", "senior": "£21–25" },
+    { "role": "Chauffeur / security driver", "basis": "per hr", "entry": "£18–20", "experienced": "£20–24", "senior": "£24–30" },
+    { "role": "Close protection / HNW", "basis": "per hr", "entry": "—", "experienced": "£28–35", "senior": "£35–45" },
+    { "role": "Skilled trades", "basis": "per day", "entry": "£150–180", "experienced": "£180–220", "senior": "£220–280" }
+  ]
+}
