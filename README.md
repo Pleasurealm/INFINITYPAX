@@ -58,8 +58,13 @@ Sign-in is a single step (no email verification):
   is the UX layer.
 
 Functions: `signin.js` (validate name/mobile or admin email → session),
-`roster.js` (protected data). Sessions are stateless HMAC tokens (no database),
-valid ~12h.
+`roster.js` (protected data), `signins.js` (admin-only sign-in log). Sessions are
+stateless HMAC tokens (no database), valid ~12h.
+
+**Sign-in log:** every successful sign-in (name, mobile, email, role, time, IP) is
+recorded via **Netlify Blobs** and viewable at `signins.html` — **admin only**
+(`signins.js` returns 403 for non-admins). Blobs needs no configuration on Netlify;
+locally, run `netlify dev`. The admin page includes search and CSV export.
 
 ## Environment variables (Netlify → Site settings → Environment variables)
 | Key | Purpose |

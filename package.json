@@ -1,0 +1,9 @@
+{
+  "name": "infinitypax-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Infinity Pax — capability dashboard, team job search, and sign-in gate.",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}
