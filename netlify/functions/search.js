@@ -1,10 +1,12 @@
-/* Firecrawl search proxy.
+/* Firecrawl live search proxy.
  * Keeps FIRECRAWL_API_KEY server-side — the browser never sees it.
  * POST { query, limit?, location? }  ->  { results: [{ title, url, description }] }
  *
- * Env: FIRECRAWL_API_KEY  (set in Netlify site settings → Environment variables)
+ * Uses Firecrawl v2 /search (live web results). Env:
+ *   FIRECRAWL_API_KEY   (required)  — set in Netlify → Site settings → Environment variables
+ *   FIRECRAWL_ENDPOINT  (optional)  — override, defaults to https://api.firecrawl.dev/v2/search
  */
-const FIRECRAWL_ENDPOINT = 'https://api.firecrawl.dev/v1/search';
+const DEFAULT_ENDPOINT = 'https://api.firecrawl.dev/v2/search';
 
 exports.handler = async function (event) {
   const cors = {
@@ -21,8 +23,9 @@ exports.handler = async function (event) {
 
   const key = process.env.FIRECRAWL_API_KEY;
   if (!key) {
-    return { statusCode: 500, headers: cors, body: JSON.stringify({ error: 'Search is not configured. Set FIRECRAWL_API_KEY in the Netlify environment.' }) };
+    return { statusCode: 500, headers: cors, body: JSON.stringify({ error: 'Live search is not configured. Set FIRECRAWL_API_KEY in the Netlify environment.' }) };
   }
+  const endpoint = process.env.FIRECRAWL_ENDPOINT || DEFAULT_ENDPOINT;
 
   let payload;
   try { payload = JSON.parse(event.body || '{}'); }
@@ -32,11 +35,13 @@ exports.handler = async function (event) {
   if (!query) return { statusCode: 400, headers: cors, body: JSON.stringify({ error: 'Missing "query".' }) };
 
   const limit = Math.min(Math.max(parseInt(payload.limit, 10) || 10, 1), 20);
-  const body = { query: query, limit: limit };
+
+  // Firecrawl v2 search body. `sources: ['web']` returns SERP-style {url,title,description}.
+  const body = { query: query, limit: limit, sources: ['web'] };
   if (payload.location) body.location = String(payload.location);
 
   try {
-    const resp = await fetch(FIRECRAWL_ENDPOINT, {
+    const resp = await fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key },
       body: JSON.stringify(body)
@@ -51,16 +56,21 @@ exports.handler = async function (event) {
       return { statusCode: 502, headers: cors, body: JSON.stringify({ error: msg }) };
     }
 
-    // Firecrawl returns { success, data: [ { title, url, description, ... } ] }
-    const items = Array.isArray(data && data.data) ? data.data
-      : Array.isArray(data && data.results) ? data.results
-      : Array.isArray(data) ? data : [];
+    // v2 groups results by source (data.web); older/self-host shapes may return data as an array
+    // or data.results. Normalise all of them.
+    const d = data && data.data !== undefined ? data.data : data;
+    let items = [];
+    if (Array.isArray(d)) items = d;
+    else if (d && Array.isArray(d.web)) items = d.web;
+    else if (d && Array.isArray(d.results)) items = d.results;
+    else if (data && Array.isArray(data.results)) items = data.results;
 
     const results = items.map(function (it) {
+      const meta = it.metadata || {};
       return {
-        title: it.title || it.metadata && it.metadata.title || it.url || 'Untitled',
-        url: it.url || it.link || (it.metadata && it.metadata.sourceURL) || '',
-        description: it.description || (it.metadata && it.metadata.description) || it.snippet || ''
+        title: it.title || meta.title || it.url || 'Untitled',
+        url: it.url || it.link || meta.sourceURL || meta.url || '',
+        description: it.description || it.snippet || meta.description || ''
       };
     }).filter(function (r) { return r.url; });
 

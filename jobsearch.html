@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>INFINITYPAX — Team Job Search</title>
+  <meta name="description" content="Live, tailored job search for 50 ex-forces personnel — luxury retail, hospitality, private homes and high-net-worth clients.">
+  <link rel="icon" href="assets/img/logo-black.png">
+  <link rel="stylesheet" href="assets/css/letterhead.css">
+  <style>
+    body{background:var(--paper);}
+    .controls{display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin:24px 0 8px;}
+    .controls input[type=search]{flex:1; min-width:220px; font-family:var(--body); font-size:12.5px; color:var(--ink); background:var(--paper); border:1px solid var(--hair); padding:10px 12px;}
+    .controls input:focus-visible{outline:2px solid var(--ink); outline-offset:1px;}
+    .fbtns{display:flex; gap:8px; flex-wrap:wrap;}
+    .fbtns button{font-family:var(--display); text-transform:uppercase; letter-spacing:0.08em; font-size:9.5px; color:var(--ink-2); background:var(--paper); border:1px solid var(--hair); padding:9px 13px; cursor:pointer;}
+    .fbtns button.active{color:var(--paper); background:var(--ink); border-color:var(--ink);}
+    .runall{font-family:var(--display); text-transform:uppercase; letter-spacing:var(--tw-wide); font-size:9.5px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); padding:10px 16px; cursor:pointer;}
+    .runall:hover{background:var(--ink-2);}
+    .jscount{font-family:var(--display); text-transform:uppercase; letter-spacing:var(--tw-wide); font-size:9.5px; color:var(--meta); margin:6px 0 20px;}
+    .jsgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:16px;}
+    .jc{border:1px solid var(--hair); padding:16px 18px; display:flex; flex-direction:column; gap:11px;}
+    .jc-h{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;}
+    .jc-ser{font-family:var(--display); color:var(--meta); font-size:11px; letter-spacing:0.06em;}
+    .jc-name{font-family:var(--display); text-transform:uppercase; letter-spacing:0.04em; font-size:16px; color:var(--ink); margin:0;}
+    .jc-remark{font-family:var(--display); text-transform:uppercase; letter-spacing:0.08em; font-size:8px; color:var(--paper); background:var(--ink); padding:3px 6px;}
+    .jc-phone{font-family:var(--body); font-size:11px; color:var(--meta); margin-left:auto;}
+    .jc-chips{display:flex; gap:6px; flex-wrap:wrap;}
+    .jc-chips span{font-family:var(--display); text-transform:uppercase; letter-spacing:0.06em; font-size:8.5px; color:var(--ink-2); border:1px solid var(--hair); padding:4px 8px;}
+    .jc-lbl{font-family:var(--display); text-transform:uppercase; letter-spacing:var(--tw-wide); font-size:9px; color:var(--meta);}
+    .jc-roles{margin:0; padding:0; list-style:none;}
+    .jc-roles li{font-family:var(--body); color:var(--ink-2); font-size:11px; line-height:1.7; padding-left:14px; position:relative;}
+    .jc-roles li::before{content:"—"; position:absolute; left:0; color:var(--meta);}
+    .jc-search{display:flex; gap:8px; margin-top:2px;}
+    .jc-q{flex:1; min-width:0; font-family:var(--body); font-size:11.5px; color:var(--ink); background:var(--paper); border:1px solid var(--hair-soft); padding:9px 10px;}
+    .jc-q:focus-visible{outline:1px solid var(--ink);}
+    .jc-find{font-family:var(--display); text-transform:uppercase; letter-spacing:var(--tw-wide); font-size:9px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); padding:9px 14px; cursor:pointer; white-space:nowrap;}
+    .jc-find:hover{background:var(--ink-2);} .jc-find:disabled{opacity:.5; cursor:default;}
+    .jc-results{display:none; flex-direction:column; gap:0;}
+    .jc-results.open{display:flex; border-top:1px solid var(--hair-soft); margin-top:2px;}
+    .js-status{font-family:var(--display); text-transform:uppercase; letter-spacing:var(--tw-wide); font-size:9px; color:var(--meta); padding:10px 0 6px;}
+    .js-status.err{color:var(--ink);}
+    .js-res{padding:10px 0; border-bottom:1px solid var(--hair-soft);}
+    .js-res a{font-family:var(--display); text-transform:uppercase; letter-spacing:0.02em; font-size:12px; color:var(--ink); text-decoration:none;}
+    .js-res a:hover{text-decoration:underline;}
+    .js-res .u{font-family:var(--body); font-size:10px; color:var(--brass, var(--meta)); word-break:break-all; display:block; margin:4px 0;}
+    .js-res p{font-family:var(--body); font-size:11px; line-height:1.5; color:var(--ink-2); margin:2px 0 0;}
+    .jc-foot{display:flex; gap:8px; flex-wrap:wrap; align-items:center; border-top:1px solid var(--hair-soft); padding-top:11px;}
+    .jc-email{flex:1; min-width:150px; font-family:var(--body); font-size:11px; color:var(--ink); background:var(--paper); border:1px solid var(--hair-soft); padding:8px 10px;}
+    .jc-copy,.jc-mail{font-family:var(--display); text-transform:uppercase; letter-spacing:var(--tw-wide); font-size:9px; padding:8px 12px; border:1px solid var(--ink); background:var(--paper); color:var(--ink); cursor:pointer; text-decoration:none;}
+    .jc-copy:hover,.jc-mail:hover{background:var(--ink); color:var(--paper);}
+    .jc-copy.done{background:var(--ink); color:var(--paper);}
+    .backbar{display:flex; gap:12px; margin:28px 0 0; flex-wrap:wrap;}
+    .backbar a{font-family:var(--display); text-transform:uppercase; letter-spacing:var(--tw-wide); font-size:10px; padding:12px 20px; border:1px solid var(--ink); text-decoration:none; color:var(--ink);}
+    .backbar a:hover{background:var(--ink); color:var(--paper);}
+    .note{border-left:1px solid var(--hair); padding:4px 0 4px 16px; margin-top:18px;}
+    .note p{font-family:var(--body); color:var(--ink-2); font-size:11px; line-height:1.55; margin:0;}
+  </style>
+</head>
+<body>
+<div class="dash">
+
+  <header class="dtop">
+    <img src="assets/img/logo-black.png" alt="INFINITYPAX">
+    <div class="words">
+      <div class="wm">Infinity Pax</div>
+      <a class="sub" href="https://www.infinitypax.info" style="text-decoration:none;">www.infinitypax.info</a>
+    </div>
+    <div class="role">Operations Manager<br><b>Mithulal Bishwakarma · +44.7729.669.690</b></div>
+  </header>
+
+  <section class="lede">
+    <div class="eyebrow">Team Job Search · 50 Ex-Forces Personnel</div>
+    <h1>Team<br>Job Search</h1>
+    <p>Live, tailored job matching for the Infinity Pax team across luxury retail, hospitality, private homes and high-net-worth clients. Each seeker has a suggested search you can edit, a one-click live search, and a personalised covering email. Searches run through a secure server function — the search key never reaches the browser.</p>
+  </section>
+
+  <div class="controls">
+    <input type="search" id="q" placeholder="Filter seekers by name, qualification or trade…" aria-label="Filter seekers">
+    <div class="fbtns" id="filters">
+      <button class="active" data-f="all">All</button>
+      <button data-f="sia">SIA</button>
+      <button data-f="driver">Drivers</button>
+      <button data-f="trade">Trades</button>
+    </div>
+    <button class="runall" id="runall" type="button">Search all shown</button>
+  </div>
+  <div class="jscount" id="jscount"></div>
+
+  <div class="jsgrid" id="jsgrid"></div>
+
+  <div class="note">
+    <p>Live search requires a Firecrawl API key set as <b>FIRECRAWL_API_KEY</b> in the Netlify site environment. Suggested queries and target-employer emails are saved in this browser.</p>
+  </div>
+
+  <div class="backbar">
+    <a href="index.html">← Capability Dashboard</a>
+    <a href="team.html">Team Roster</a>
+    <a href="jobfinder.html">Single Job Finder</a>
+  </div>
+
+  <footer class="dfoot">
+    <span>Infinity Pax · Ex-Forces Security &amp; Estate Services</span>
+    <span>Team Job Search · Confidential</span>
+    <span>Mithulal Bishwakarma · mi@inifinitypax.london</span>
+  </footer>
+
+</div>
+
+<script src="assets/js/profile.js"></script>
+<script src="assets/js/jobsearch.js"></script>
+</body>
+</html>

@@ -9,9 +9,10 @@ Job Finder.
 | File | Purpose |
 |------|---------|
 | `index.html` | **Capability Dashboard** — stat tiles, rate-tier toggle, covering email (Copy Email) |
+| `jobsearch.html` | **Team Job Search** — all 50 seekers, each with a tailored, editable query, one-click **live** Firecrawl search, and a copy-ready covering email; "Search all shown" bulk action |
 | `team.html` | **Team Roster** — 50-person roster with search/filter, per-person target-employer email (saved to the browser), and copy-ready covering emails |
 | `statement.html` | **Capability Statement** — print/PDF letterhead version |
-| `jobfinder.html` | **Job Finder Agent** — live web search via a Netlify Function (Firecrawl) |
+| `jobfinder.html` | **Single Job Finder** — one live web search via a Netlify Function (Firecrawl) |
 
 ## Design system
 Pure black/white letterhead system in `assets/css/letterhead.css`:
