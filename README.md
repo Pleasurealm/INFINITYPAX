@@ -42,13 +42,47 @@ Set the key in Netlify: **Site settings → Environment variables**
 FIRECRAWL_API_KEY = fc-xxxxxxxxxxxxxxxx
 ```
 
+## Access control (sign-in gate)
+The **Capability Dashboard** and **Capability Statement** are public marketing
+pages. The **jobs** — Team Job Search, Team Roster, Single Job Finder — are
+**restricted**: a visitor must sign in before any job/roster data is served.
+
+- **Team members** sign in with **full name + mobile** (must match the Infinity Pax
+  roll) **+ email**, then confirm a **6-digit code emailed to them** from
+  `accounts@infinitypax.london`. Only names/mobiles on `data/roster.json` are accepted.
+- **Mithu / Admin** sign in with an **admin passcode** (no email step) and get the
+  admin role (identity: Mithulal Bishwakarma · mi@infinitypax.london).
+- Enforcement is **server-side**: `netlify/functions/roster.js` returns the roster
+  only for a valid signed session; the raw `data/roster.json` is blocked from the
+  public site (`netlify.toml` redirect). The client overlay (`assets/js/auth.js`)
+  is the UX layer.
+
+Functions: `auth-request.js` (validate + email code), `auth-verify.js` (check code →
+session), `auth-admin.js` (passcode → admin session), `roster.js` (protected data).
+Sessions are stateless HMAC tokens (no database), valid ~12h.
+
+**Email:** verification codes are sent via **Resend**. The domain `infinitypax.london`
+must be verified in Resend so mail can be sent from `accounts@infinitypax.london`.
+
+## Environment variables (Netlify → Site settings → Environment variables)
+| Key | Purpose |
+|-----|---------|
+| `FIRECRAWL_API_KEY` | Live job search (Firecrawl). |
+| `AUTH_SECRET` | Secret for signing sign-in/session tokens. Use a long random string. |
+| `RESEND_API_KEY` | Sending verification emails via Resend. |
+| `ADMIN_PASSCODE` | Passcode for Mithu / Admin sign-in. |
+| `AUTH_FROM` | *(optional)* Sender, default `Infinity Pax <accounts@infinitypax.london>`. |
+| `ADMIN_EMAIL` / `ADMIN_NAME` | *(optional)* Admin identity, default `mi@infinitypax.london` / `Mithulal Bishwakarma`. |
+
 ## Deploy to Netlify
 1. Connect this repository in Netlify (**Add new site → Import an existing project**).
    Build settings are read from `netlify.toml` (publish `.`, functions `netlify/functions`).
-2. Add the `FIRECRAWL_API_KEY` environment variable.
-3. Deploy. The dashboard is served at the site root.
-4. **Domain:** point `infinitypax.info` (or a subdomain) at the site under
-   **Domain management** and follow Netlify's DNS instructions.
+2. Add the environment variables above (at minimum `AUTH_SECRET`, `RESEND_API_KEY`,
+   `ADMIN_PASSCODE`, `FIRECRAWL_API_KEY`).
+3. Verify `infinitypax.london` in **Resend** so `accounts@infinitypax.london` can send.
+4. Deploy. Public pages at the site root; the jobs pages prompt for sign-in.
+5. **Domain:** point `infinitypax.info` (or a subdomain) at the site under
+   **Domain management**.
 
 ### Local preview
 ```bash

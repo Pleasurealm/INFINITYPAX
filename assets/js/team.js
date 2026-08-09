@@ -108,14 +108,18 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
-    wire();
-    fetch('data/roster.json', { cache: 'no-store' })
+  function load() {
+    IPAuth.authFetch('/.netlify/functions/roster', { cache: 'no-store' })
       .then(function (r) { return r.json(); })
-      .then(function (data) { roster = data; render(); })
+      .then(function (data) { roster = (data && data.roster) || []; render(); })
       .catch(function () {
         document.getElementById('roster').innerHTML =
-          '<p class="t">Could not load the roster data file. If you are viewing this from disk, run it through a local server or deploy it.</p>';
+          '<p class="t">Could not load the roster. Deploy the site (with the auth functions and AUTH_SECRET) to use this page.</p>';
       });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    wire();
+    IPAuth.protect(function () { load(); });
   });
 })();

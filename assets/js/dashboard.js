@@ -78,6 +78,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     copyEmail();
     getJSON('data/rates.json').then(renderRates).catch(function () { renderRates(FALLBACK_RATES); });
-    getJSON('data/roster.json').then(renderStats).catch(function () { /* keep hardcoded tile values */ });
+    // Roster is protected (auth required); the public dashboard uses the fixed
+    // capability totals already in the markup.
   });
 })();

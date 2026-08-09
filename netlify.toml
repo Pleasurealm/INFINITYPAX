@@ -5,12 +5,22 @@
 
 [functions]
   node_bundler = "esbuild"
+  # Bundle the roster so the protected function can read it while it stays off the public site
+  included_files = ["data/roster.json"]
 
 # Friendly alias for the search function
 [[redirects]]
   from = "/api/search"
   to = "/.netlify/functions/search"
   status = 200
+
+# Protected data — the roster is served only via the authenticated function,
+# never as a public file.
+[[redirects]]
+  from = "/data/roster.json"
+  to = "/404.html"
+  status = 404
+  force = true
 
 # SPA-style fallback is NOT wanted (multi-page static site); explicit pages only.
 [[headers]]

@@ -54,6 +54,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    if (window.IPAuth) IPAuth.protect(function () {});
     document.getElementById('jfForm').addEventListener('submit', function (e) {
       e.preventDefault();
       var q = document.getElementById('q').value.trim();

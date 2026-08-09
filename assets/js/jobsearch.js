@@ -149,11 +149,13 @@
     });
     document.getElementById('runall').addEventListener('click', runAll);
 
-    fetch('data/roster.json', { cache: 'no-store' })
-      .then(function (r) { return r.json(); })
-      .then(function (data) { roster = data; render(); })
-      .catch(function () {
-        document.getElementById('jsgrid').innerHTML = '<p class="t">Could not load roster data. Deploy the site or run a local server.</p>';
-      });
+    IPAuth.protect(function () {
+      IPAuth.authFetch('/.netlify/functions/roster', { cache: 'no-store' })
+        .then(function (r) { return r.json(); })
+        .then(function (data) { roster = (data && data.roster) || []; render(); })
+        .catch(function () {
+          document.getElementById('jsgrid').innerHTML = '<p class="t">Could not load roster data. Deploy the site (with the auth functions and AUTH_SECRET) to use this page.</p>';
+        });
+    });
   });
 })();
